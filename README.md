@@ -15,6 +15,8 @@ Some of my changes are:
 * Focus only on Windows 10 
 * Changes to support use of _retail_ Windows 10 iso
 
+TODO Need like a quick-start / how-to-make-it-go section...
+
 ### Packer Version
 
 [Packer](https://github.com/mitchellh/packer/blob/master/CHANGELOG.md) `1.1.3` is recommended.
