@@ -1,6 +1,4 @@
-# My Retina Windows Templates for Packer
-
-[![Build status](https://ci.appveyor.com/api/projects/status/76pea1oexae5ca05?svg=true)](https://ci.appveyor.com/project/StefanScherer/packer-windows)
+# Retail Windows 10 Templates for Packer
 
 ### Introduction
 
@@ -9,14 +7,13 @@ Vagrant using Packer ([Website](https://www.packer.io))
 ([Github](https://github.com/mitchellh/packer)).
 
 This repo is a modified fork of the popular
-[joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows)
+[StefanScherer/packer-windows](https://github.com/stefanscherer/packer-windows)
 repo.
 
-Some of my enhancements are:
+Some of my changes are:
 
-* Support of fullscreen Retina display on a MacBook Pro.
-* WinRM, no more OpenSSH
-* PowerShell attached to taskbar in desktop editions
+* Focus only on Windows 10 
+* Changes to support use of _retail_ Windows 10 iso
 
 ### Packer Version
 
@@ -24,73 +21,15 @@ Some of my enhancements are:
 
 ### Windows Versions
 
-The following Windows versions are known to work (built with VMware Fusion Pro
-10.1.1):
-
-* Windows 10
-  * Windows 10 1803 -> Vagrant Cloud box [StefanScherer/windows_10](https://app.vagrantup.com/StefanScherer/boxes/windows_10)
-  * Windows 10 Insider
-* Windows Server 2016 Desktop -> Vagrant Cloud box [StefanScherer/windows_2016](https://app.vagrantup.com/StefanScherer/boxes/windows_2016)
-* Windows Server 2019 Desktop (Insider Preview)
-* Windows Server Core
-  * Windows Server 2016 without and with Docker -> Vagrant Cloud box [StefanScherer/windows_2016_docker](https://app.vagrantup.com/StefanScherer/boxes/windows_2016_docker)
-  * Windows Server 1709 without and with Docker
-  * Windows Server 1803 without and with Docker
-  * Windows Server InsiderPreview Semi-Annual without and with Docker
-  * Windows Server 2019 Core(Insider Preview)
-
-You may find other packer template files, but older versions of Windows doesn't
-work so nice with a Retina display.
+TODO Provide equivalent copy...
 
 ### Windows Editions
 
-All Windows Server versions are defaulted to the Server Standard edition. You
-can modify this by editing the Autounattend.xml file, changing the
-`ImageInstall`>`OSImage`>`InstallFrom`>`MetaData`>`Value` element (e.g. to
-Windows Server 2012 R2 SERVERDATACENTER).
-
-To retrieve the correct ImageName from an ISO file use the following two commands.
-
-```
-PS C:\> Mount-DiskImage -ImagePath C:\iso\Windows_InsiderPreview_Server_2_16237.iso
-PS C:\> Get-WindowsImage -ImagePath e:\sources\install.wim
-
-ImageIndex       : 1
-ImageName        : Windows Server 2016 SERVERSTANDARDACORE
-ImageDescription : Windows Server 2016 SERVERSTANDARDACORE
-ImageSize        : 7,341,507,794 bytes
-
-ImageIndex       : 2
-ImageName        : Windows Server 2016 SERVERDATACENTERACORE
-ImageDescription : Windows Server 2016 SERVERDATACENTERACORE
-ImageSize        : 7,373,846,520 bytes
-```
+TODO Provide equivalent copy
 
 ### Product Keys
 
-The `Autounattend.xml` files are configured to work correctly with trial ISOs
-(which will be downloaded and cached for you the first time you perform a
-`packer build`). If you would like to use retail or volume license ISOs, you
-need to update the `UserData`>`ProductKey` element as follows:
-
-* Uncomment the `<Key>...</Key>` element
-* Insert your product key into the `Key` element
-
-If you are going to configure your VM as a KMS client, you can use the product
-keys at http://technet.microsoft.com/en-us/library/jj612867.aspx. These are the
-default values used in the `Key` element.
-
-### Using existing ISOs
-
-If you have already downloaded the ISOs or would like to override them, set
-these additional variables:
-
-* iso_url - path to existing ISO
-* iso_checksum - md5sum of existing ISO (if different)
-
-```
-packer build -var 'iso_url=./server2016.iso' .\windows_2016.json
-```
+TODO Provide updated copy
 
 ### Windows Updates
 
@@ -181,7 +120,3 @@ vagrant box add windows_2016_docker windows_2016_docker_hyperv.box
 vagrant init windows_2016_docker
 vagrant up --provider hyperv
 ```
-
-### Contributing
-
-Pull requests welcomed, but normally should go to Joe's repo.
