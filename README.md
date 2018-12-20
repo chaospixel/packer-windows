@@ -100,12 +100,32 @@ Some of these images use Hyper-V "Generation 2" VMs to enable the latest feature
 * `windows_server_insider_docker.json`
 * `windows_10_insider.json`
 
-Before running `packer build`, be sure to run `./make_unattend_iso.ps1` first. Otherwise the build will fail on a missing ISO file
+Trial versions of Windows 2008 R2 / 2012 / 2012 R2 / 2016 are used by default. These images can be used for 180 days without activation.
 
-```none
-hyperv-iso output will be in this color.
+Alternatively – if you have access to [MSDN](http://msdn.microsoft.com) or [TechNet](http://technet.microsoft.com/) – you can download retail or volume license ISO images and place them in the `iso` directory. If you do, you should supply appropriate values for `iso_url` (e.g. `./iso/<path to your iso>.iso`) and `iso_checksum` (e.g. `<the md5 of your iso>`) to the Packer command. For example, to use the Windows 2008 R2 (With SP1) retail ISO:
 
-1 error(s) occurred:
+1. Download the Windows Server 2008 R2 with Service Pack 1 (x64) - DVD (English) ISO (`en_windows_server_2008_r2_with_sp1_x64_dvd_617601.iso`)
+2. Verify that `en_windows_server_2008_r2_with_sp1_x64_dvd_617601.iso` has an MD5 hash of `8dcde01d0da526100869e2457aafb7ca` (Microsoft lists a SHA1 hash of `d3fd7bf85ee1d5bdd72de5b2c69a7b470733cd0a`, which is equivalent)
+3. Clone this repo to a local directory
+4. Move `en_windows_server_2008_r2_with_sp1_x64_dvd_617601.iso` to the `iso` directory
+5. Run:
+    
+    ```
+    packer build \
+        -var iso_url=./iso/en_windows_server_2008_r2_with_sp1_x64_dvd_617601.iso \
+        -var iso_checksum=8dcde01d0da526100869e2457aafb7ca windows_2008_r2.json
+    ```
+
+### Variables
+
+The Packer templates support the following variables:
+
+| Name                | Description                                                      |
+| --------------------|------------------------------------------------------------------|
+| `iso_url`           | Path or URL to ISO file                                          |
+| `iso_checksum`      | Checksum (see also `iso_checksum_type`) of the ISO file          |
+| `iso_checksum_type` | The checksum algorithm to use (out of those supported by Packer) |
+| `autounattend`      | Path to the Autounattend.xml file                                |
 
 * Secondary Dvd image does not exist: CreateFile ./iso/windows_server_insider_unattend.iso: The system cannot find the file specified.
 ```
