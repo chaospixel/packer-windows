@@ -16,6 +16,9 @@ Some of my changes are:
 * Changes to support use of _retail_ Windows 10 iso
 
 TODO Need like a quick-start / how-to-make-it-go section...
+```
+packer build -only virtualbox-iso -var 'iso_url=.\iso\Windows10Pro.iso' -var 'iso_checksum=93a24f72ac692146fb40e147e488716c1030bd21' .\windows_10.json
+```
 
 ### Packer Version
 
@@ -28,6 +31,10 @@ TODO Provide equivalent copy...
 ### Windows Editions
 
 TODO Provide equivalent copy
+
+install.*esd*
+
+Windows 10 Pro
 
 ### Product Keys
 
