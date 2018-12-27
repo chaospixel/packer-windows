@@ -17,8 +17,7 @@ Some of my changes are:
 
 TODO Need like a quick-start / how-to-make-it-go section...
 ```
-packer build -only virtualbox-iso -var 'iso_url=.\iso\Windows10Pro.iso' -var 'iso_checksum=93a24f72ac692146fb40e147e488716c1030bd21' -on-error
- ask .\windows_10.json
+packer build -only virtualbox-iso -var 'iso_url=.\iso\Windows10Pro.iso' -var iso_checksum='93a24f72ac692146fb40e147e488716c1030bd21' -var 'iso_checksum_type=sha1' -on-error ask .\windows_10.json
 ```
 
 ### Packer Version
