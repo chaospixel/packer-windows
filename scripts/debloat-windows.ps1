@@ -3,6 +3,7 @@ if ($env:PACKER_BUILDER_TYPE -And $($env:PACKER_BUILDER_TYPE).startsWith("hyperv
 } else {
   Write-Host Downloading debloat zip
   $url="https://github.com/StefanScherer/Debloat-Windows-10/archive/master.zip"
+  [Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
   (New-Object System.Net.WebClient).DownloadFile($url, "$env:TEMP\debloat.zip")
   Expand-Archive -Path $env:TEMP\debloat.zip -DestinationPath $env:TEMP -Force
 
