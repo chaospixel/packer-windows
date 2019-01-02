@@ -15,10 +15,12 @@ Some of my changes are:
 * Focus only on Windows 10 
 * Changes to support use of _retail_ Windows 10 iso
 
-TODO Need like a quick-start / how-to-make-it-go section...
+Quick start:
 ```
 packer build -only virtualbox-iso -var 'iso_url=.\iso\Windows10Pro.iso' -var iso_checksum='93a24f72ac692146fb40e147e488716c1030bd21' -var 'iso_checksum_type=sha1' -on-error ask .\windows_10.json
 ```
+
+TODO The initial `vagrant up` fails - I assume this is something that runs in the first-logon list in unattended that should be part of the rest of the provisioning script. figure out what it is; and fix it :)
 
 ### Packer Version
 
