@@ -97,7 +97,7 @@
       "disk_size": "{{user `disk_size`}}",
       "hard_drive_interface": "sata",
       "hard_drive_nonrotational": true,
-      "hard_drive_discart": true,
+      "hard_drive_discard": true,
       "floppy_files": [
         "{{user `autounattend`}}",
         "./scripts/fixnetwork.ps1",
