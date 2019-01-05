@@ -82,7 +82,6 @@
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_interface": "sata",
       "headless": "{{user `headless`}}",
       "boot_wait": "6m",
       "ssh_username": "vagrant",
@@ -95,9 +94,6 @@
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "guest_os_type": "Windows10_64",
       "disk_size": "{{user `disk_size`}}",
-      "hard_drive_interface": "sata",
-      "hard_drive_nonrotational": true,
-      "hard_drive_discard": true,
       "floppy_files": [
         "{{user `autounattend`}}",
         "./scripts/fixnetwork.ps1",
